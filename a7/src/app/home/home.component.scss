@@ -1,0 +1,30 @@
+.bem-vindo{
+    margin-top: 2%;
+    height: 100%;
+
+    h1{
+        text-align: center;
+        margin: 0;
+        font-size: 4rem;
+        color: #007bff!important;
+        /* stroke: #bd2130;
+        stroke-width: 3px; */
+        text-shadow: 3px 3px black;
+    }
+
+    h4{
+        text-align: center;
+    }
+
+    img{
+        width: 75%;
+    }
+
+    .img{
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        margin: 0;
+    }
+}

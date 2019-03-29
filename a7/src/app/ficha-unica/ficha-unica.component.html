@@ -1,0 +1,190 @@
+<!-- Formulário que permite visualizar os dados do componente já cadastrados, permitindo alterar
+alguma informação -->
+<form>
+  <h3>DADOS PESSOAIS</h3>
+  <div class="form-group">
+    <div class="form-group">
+      <label for="inputName">Nome*</label>
+      <input type="text" class="form-control" name="name" id="inputName" placeholder="Nome"
+        [(ngModel)]="componente.name" value="{{componentes.name}}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="form-group col-md-3">
+      <label for="inputBornDate">Data de nascimento*</label>
+      <input type="date" class="form-control" name="dataNasc" id="inputBornDate" placeholder="Data de nascimento"
+        [(ngModel)]="componente.dataNasc" value="{{componentes.dataNasc}}">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputIntrument">Sexo*</label>
+      <select value="{{componentes.sexo}}" name="sexo" id="inputGender" class="form-control"
+        [(ngModel)]="componente.sexo" placeholder="as">
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputIntrument">Instrumento*</label>
+      <select value="{{componentes.instrumento}}" name="instrumento" id="inputIntrument" class="form-control"
+        [(ngModel)]="componente.instrumento">
+        <option selected value="Violino">Violino</option>
+        <option value="Flauta">Flauta</option>
+        <option value="Clarinete">Clarinete</option>
+        <option value="Sax Alto">Sax Alto</option>
+        <option value="Sax Tenor">Sax Tenor</option>
+        <option value="Trompete">Trompete</option>
+        <option value="Trombone">Trombone</option>
+        <option value="Bombardino">Bombardino</option>
+        <option value="Teclado">Teclado</option>
+        <option value="Contra-baixo">Contra-baixo</option>
+        <option value="Bateria">Bateria</option>
+      </select>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <div class="form-group row">
+      <div class="form-group col-md-8">
+        <label for="inputFatherName">Nome do pai</label>
+        <input type="text" class="form-control" name="fatherName" id="inputName" placeholder="Nome do pai"
+          [(ngModel)]="componente.fatherName" value="{{componentes.fatherName}}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputFatherCel">Celular</label>
+        <input type="text" class="form-control" name="fatherCel" id="inputFatherCel" placeholder="Celular"
+          [(ngModel)]="componente.fatherCel" value="{{componentes.fatherCel}}" [textMask]="{mask: celPhone}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-group col-md-8">
+        <label for="inputMotherName">Nome da mãe</label>
+        <input type="text" class="form-control" name="motherName" id="inputMotherName" placeholder="Nome da mãe"
+          [(ngModel)]="componente.motherName" value="{{componentes.motherName}}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputMotherCel">Celular</label>
+        <input type="text" class="form-control" name="motherCel" id="inputMotherCel" placeholder="Celular"
+          [(ngModel)]="componente.motherCel" value="{{componentes.motherCel}}" [textMask]="{mask: celPhone}">
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <h3>INFORMAÇÕES ADICIONAIS</h3>
+  <div class="form-group">
+    <label for="inputAddress">Endereço* </label>
+    <input type="text" class="form-control" name="address" id="inputAddress" placeholder="Rua/Avenida, Nº - Bairro"
+      [(ngModel)]="componente.address" value="{{componentes.address}}">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Cidade*</label>
+      <input type="text" class="form-control" name="city" id="inputCity" placeholder="Cidade"
+        [(ngModel)]="componente.city" value="{{componentes.city}}">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Estado*</label>
+      <select value="{{componentes.state}}" name="state" id="inputState" class="form-control"
+        [(ngModel)]="componente.state">
+        <option value="AC">Acre</option>
+        <option value="AL">Alagoas</option>
+        <option value="AP">Amapá</option>
+        <option value="AM">Amazonas</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceará</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PA">Pará</option>
+        <option value="PB">Paraíba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernambuco</option>
+        <option value="PI">Piauí</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="RN">Rio Grande do Norte</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="SP">São Paulo</option>
+        <option value="SE">Sergipe</option>
+        <option value="TO">Tocantins</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputCEP">CEP</label>
+      <input value="{{componentes.cep}}" type="text" class="form-control" name="cep" id="inputCEP" placeholder="CEP"
+        [(ngModel)]="componente.cep" [textMask]="{mask: cep}">
+    </div>
+  </div>
+  <hr>
+  <h3>FORMAS DE CONTATO</h3>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail">Email*</label>
+      <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email"
+        [(ngModel)]="componente.email" value="{{componentes.email}}">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputTel">Telefone*</label>
+      <input type="text" class="form-control" name="phone" id="inputTel" placeholder="Telefone"
+        [(ngModel)]="componente.phone" value="{{componentes.phone}}" [textMask]="{mask: phone}">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputCel">Celular*</label>
+      <input type="text" class="form-control" name="celPhone" id="inputCel" placeholder="Celular"
+        [(ngModel)]="componente.celPhone" value="{{componentes.celPhone}}" [textMask]="{mask: celPhone}">
+    </div>
+  </div>
+
+  <button class="btn btn-primary" (click)="verifica()"> <img [src]="imagePathEditar" alt=""> Editar cadastro</button>
+  <button class="btn btn-danger" (click)="verificaDelete()"> <img [src]="imagePathExcluir" alt=""> Exluir
+    cadastro</button>
+</form>
+
+<!-- Modal para visualização de algum requisito que nao foi inserido correamente
+      e mostrar o suceeso de ter cadastrado -->
+<div class="backdrop" [ngStyle]='{"display": display}'></div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]='{"display": display}'>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> <b>{{title}}</b> </h5>
+        <div [ngStyle]="{'display': opcoes}">
+          <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div [ngStyle]="{'display':listagem}">
+          <a routerLink="/listar" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+        </div>
+      </div>
+      <div class="modal-body">
+        {{body}}
+      </div>
+      <div class="modal-footer">
+        <div [ngStyle]="{'display':exclui}">
+          <button type="button" class="btn btn-primary" (click)="deleteCadastro()">Sim</button>
+          <button type="button" class="btn btn-danger" (click)="closeModal()">Não</button>
+        </div>
+        <div [ngStyle]="{'display':altera}">
+          <button type="button" class="btn btn-primary" (click)="atualizarCadastro()">Sim</button>
+          <button type="button" class="btn btn-danger" (click)="closeModal()">Não</button>
+        </div>
+        <div [ngStyle]="{'display':volta}">
+            <button type="button" class="btn btn-danger" (click)="closeModal()">Fechar</button>
+          </div>
+        <div [ngStyle]="{'display':sucesso}">
+          <a routerLink="/listar" type="button" class="btn btn-success">Sair</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

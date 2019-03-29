@@ -1,0 +1,28 @@
+<!-- Uma tabela contendo todos os componentes cadastrados com poucos informações visíveis -->
+<table class="table table-hover">
+  <thead>
+    <tr class="title">
+      <th colspan="6">COMPONENTES CADASTRADOS</th>
+    </tr>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Instrumento</th>
+      <th scope="col">Celular</th>
+      <th scope="col">E-mail</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let comp of componentes'>
+      <td>{{comp.id}}</td>
+      <td>{{comp.name}}</td>
+      <td>{{comp.instrumento}}</td>
+      <td [textMask]="{mask: celPhone}">{{comp.celPhone}}</td>
+      <td>{{comp.email}}</td>
+      <!-- Botão que permite visualizar mais informações sobre o componente -->
+      <td><a routerLink="/ficha-unica/:{{comp.id}}" class="btn btn-primary">Ver mais</a></td>
+    </tr>
+  </tbody>
+</table>
+

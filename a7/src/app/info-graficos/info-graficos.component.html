@@ -1,0 +1,31 @@
+<div class="charts">
+  <div class="centraliza">
+  <div class="pizza" style="width: 50%">
+      <h5 style="text-align: center">Quantidade de componentes por sexo</h5>
+    <div style="display: block">
+      <canvas baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [legend]="pieChartLegend">
+      </canvas>
+    </div>
+  </div>
+
+  <div class="bar" style="width: 50%">
+      <h5 style="text-align: center">Quantidade de componentes por instrumento</h5>
+    <div style="display: block">
+      <canvas style="line-height: 2%" baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+  </div>
+</div>
