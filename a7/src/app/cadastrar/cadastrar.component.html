@@ -143,8 +143,8 @@
 
 <!-- Modal para visualização de algum requisito que nao foi inserido correamente
       e mostrar o suceeso de ter cadastrado -->
-  <div class="backdrop" [ngStyle]='{"display": display}'></div>
-  <div class="modal" tabindex="-1" role="dialog" [ngStyle]='{"display": display}'>
+  <div class="modal-backdrop" [ngStyle]='{"display": display}' style="opacity: .5"></div>
+  <div class="modal fade show" tabindex="-1" role="dialog" [ngStyle]='{"display": display}'>
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">

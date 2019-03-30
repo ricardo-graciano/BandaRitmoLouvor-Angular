@@ -141,15 +141,15 @@ alguma informação -->
     </div>
   </div>
 
-  <button class="btn btn-primary" (click)="verifica()"> <img [src]="imagePathEditar" alt=""> Editar cadastro</button>
-  <button class="btn btn-danger" (click)="verificaDelete()"> <img [src]="imagePathExcluir" alt=""> Exluir
+  <button style="margin-bottom: 4rem" class="btn btn-primary" (click)="verifica()"> <img [src]="imagePathEditar" alt=""> Editar cadastro</button>
+  <button style="margin-bottom: 4rem" class="btn btn-danger" (click)="verificaDelete()"> <img [src]="imagePathExcluir" alt=""> Exluir
     cadastro</button>
 </form>
 
 <!-- Modal para visualização de algum requisito que nao foi inserido correamente
       e mostrar o suceeso de ter cadastrado -->
-<div class="backdrop" [ngStyle]='{"display": display}'></div>
-<div class="modal" tabindex="-1" role="dialog" [ngStyle]='{"display": display}'>
+<div class="modal-backdrop" [ngStyle]='{"display": display}' style="opacity: 0.5;"></div>
+<div class="modal fade show" tabindex="-1" role="dialog" [ngStyle]='{"display": display}'>
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
