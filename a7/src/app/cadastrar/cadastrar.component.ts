@@ -8,13 +8,15 @@ import { CadastrarService } from '../cadastrar.service';
   templateUrl: './cadastrar.component.html',
   styleUrls: ['./cadastrar.component.scss']
 })
+
 export class CadastrarComponent implements OnInit {
   //Variáveis utilizadas pelo modal
   display = 'none'
   class = 'btn-danger'
-
   title = "ATENÇÃO"
   body = ""
+
+  //Caminho do icone de cadastrar
   imagePathSalvar = '/assets/salvar.png'
 
   //Variáveis para o cadastro
@@ -22,13 +24,12 @@ export class CadastrarComponent implements OnInit {
   componentes: Array<any> = new Array();
 
   //Variaveis para o input mask
-  cep=[/\d/,/\d/,'.',/\d/,/\d/,/\d/,'-',/\d/,/\d/,/\d/]
-  phone= ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
-  celPhone= ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+  cep = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]
+  phone = ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+  celPhone = ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 
   constructor(private cadastrarService: CadastrarService) { }
   ngOnInit() {
-    
   }
 
   //Verifica os requisitos das informações inseridas antes de cadastrar
@@ -39,13 +40,13 @@ export class CadastrarComponent implements OnInit {
 
     const ano = String(this.componente.dataNasc).split('-');
 
+    //Expressões regulares para confirmação de dados
     const regexName = /[0-9]+/gmi;
     const regexDataNasc = /([0-9]{4})+[-]+([0-9]{2})+[-]+([0-9]{2})/gmi;
     const regexEmail = /[A-Za-z0-9._]+@[a-z]+\.[a-z]+/igm;
     const regexPhone = /\(+[0-9]{2}\)+\ +[0-9]{4}\-+[0-9]{4}/gmi
     const regexCelPhone = /\(+[0-9]{2}\)+\ +[0-9]{5}\-+[0-9]{4}/gmi
 
-    console.log(this.componente.celPhone)
     if (this.componente.name == undefined || regexName.exec(this.componente.name) != null || this.componente.name == "") {
       this.body = "Nome inválido, tente novamente"
       this.openModal()
@@ -97,18 +98,17 @@ export class CadastrarComponent implements OnInit {
 
   //Cadastra os dados inseridos em um arquivo json
   cadastrarComponente() {
-      console.log(this.componente)
-      this.cadastrarService.cadastrarComponente(this.componente).subscribe(componente => {
+    this.cadastrarService.cadastrarComponente(this.componente).subscribe(componente => {
       this.componente = new CadastrarModel();
     }, err => {
-      console.log('Erro ao enviar dados ', err)
+      alert('Erro ao enviar dados ' + err)
     });
 
-      //Mostra que o procedimento foi realizado com sucesso
-      this.title = "SUCESSO"
-      this.body = "Cadastro realizado com sucesso"
-      this.class = "btn-success"
-      this.openModal()
+    //Mostra que o procedimento foi realizado com sucesso
+    this.title = "SUCESSO"
+    this.body = "Cadastro realizado com sucesso"
+    this.class = "btn-success"
+    this.openModal()
   }
 
   //Funções para abrir e fechar o modal

@@ -1,7 +1,8 @@
+<!-- Formação dos gráficos na tela -->
 <div class="charts">
   <div class="centraliza">
-  <div class="pizza" style="width: 50%">
-      <h5 style="text-align: center">Quantidade de componentes por sexo</h5>
+  <div class="pizza" >
+      <h5>Quantidade de componentes por sexo</h5>
     <div style="display: block">
       <canvas baseChart
         [data]="pieChartData"
@@ -14,8 +15,8 @@
     </div>
   </div>
 
-  <div class="bar" style="width: 50%">
-      <h5 style="text-align: center">Quantidade de componentes por instrumento</h5>
+  <div class="bar">
+      <h5>Quantidade de componentes por instrumento</h5>
     <div style="display: block">
       <canvas style="line-height: 2%" baseChart
         [datasets]="barChartData"

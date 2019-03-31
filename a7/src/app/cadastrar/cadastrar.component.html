@@ -15,11 +15,11 @@
         [(ngModel)]="componente.dataNasc">
     </div>
     <div class="form-group col-md-3">
-        <label for="inputIntrument">Sexo*</label>
-        <select name="sexo" id="inputGender" class="form-control" [(ngModel)]="componente.sexo" placeholder="as">
-          <option value="Masculino">Masculino</option>
-          <option value="Feminino">Feminino</option>
-        </select>
+      <label for="inputIntrument">Sexo*</label>
+      <select name="sexo" id="inputGender" class="form-control" [(ngModel)]="componente.sexo" placeholder="as">
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+      </select>
     </div>
     <div class="form-group col-md-6">
       <label for="inputIntrument">Instrumento*</label>
@@ -44,7 +44,7 @@
       <div class="form-group col-md-8">
         <label for="inputFatherName">Nome do pai</label>
         <input type="text" class="form-control" name="fatherName" id="inputName" placeholder="Nome do pai"
-          [(ngModel)]="componente.fatherName" >
+          [(ngModel)]="componente.fatherName">
       </div>
       <div class="form-group col-md-4">
         <label for="inputFatherCel">Celular</label>
@@ -56,12 +56,12 @@
       <div class="form-group col-md-8">
         <label for="inputMotherName">Nome da mãe</label>
         <input type="text" class="form-control" name="motherName" id="inputMotherName" placeholder="Nome da mãe"
-          [(ngModel)]="componente.motherName" >
+          [(ngModel)]="componente.motherName">
       </div>
       <div class="form-group col-md-4">
         <label for="inputMotherCel">Celular</label>
         <input type="text" class="form-control" name="motherCel" id="inputMotherCel" placeholder="Celular"
-          [(ngModel)]="componente.motherCel" [textMask]="{mask: celPhone}" >
+          [(ngModel)]="componente.motherCel" [textMask]="{mask: celPhone}">
       </div>
     </div>
   </div>
@@ -114,7 +114,8 @@
     </div>
     <div class="form-group col-md-2">
       <label for="inputCEP">CEP</label>
-      <input type="text" class="form-control" name="cep" id="inputCEP" placeholder="CEP" [(ngModel)]="componente.cep" [textMask]="{mask: cep}">
+      <input type="text" class="form-control" name="cep" id="inputCEP" placeholder="CEP" [(ngModel)]="componente.cep"
+        [textMask]="{mask: cep}">
     </div>
   </div>
   <hr>
@@ -143,22 +144,22 @@
 
 <!-- Modal para visualização de algum requisito que nao foi inserido correamente
       e mostrar o suceeso de ter cadastrado -->
-  <div class="modal-backdrop" [ngStyle]='{"display": display}' style="opacity: .5"></div>
-  <div class="modal fade show" tabindex="-1" role="dialog" [ngStyle]='{"display": display}'>
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle"> <b>{{title}}</b> </h5>
-          <button type="button" class="close" aria-label="Close" (click)="closeModal()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          {{body}}
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn " [ngClass]="class" (click)="closeModal()">Fechar</button>
-        </div>
+<div class="modal-backdrop" [ngStyle]='{"display": display}' style="opacity: .5"></div>
+<div class="modal fade show" tabindex="-1" role="dialog" [ngStyle]='{"display": display}'>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> <b>{{title}}</b> </h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{body}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn " [ngClass]="class" (click)="closeModal()">Fechar</button>
       </div>
     </div>
   </div>
+</div>

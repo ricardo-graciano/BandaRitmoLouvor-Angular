@@ -9,7 +9,6 @@ import { CadastrarService } from '../cadastrar.service';
 export class ListarComponent implements OnInit {
 
   componentes: Array<any> = new Array();
-  celPhone= ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 
   constructor(private listarCadastros: CadastrarService ) { }
 
@@ -17,11 +16,12 @@ export class ListarComponent implements OnInit {
     this.listarComponentes();
   }
 
+  //Exibe todos os cadastros que existem no arquivo JSON
   listarComponentes(){
     this.listarCadastros.listarComponentes().subscribe(componentes =>{
       this.componentes = componentes
     }, err =>{
-      console.log('Erro ao listar componentes ', err)
+      alert('Erro ao listar componentes '+ err)
     })
   }
 }

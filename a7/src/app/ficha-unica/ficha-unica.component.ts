@@ -10,26 +10,23 @@ import { ListarModel } from './ficha-unica.model';
 export class FichaUnicaComponent implements OnInit {
   //Define variáveis a ser utilizadas pelo código
   //variaveis do "X"
-  /*continuar fechando o modal*/ opcoes="none"
-  /*voltar para listagem*/       listagem="none"
+  /*continuar fechando o modal*/ opcoes = "none"
+  /*voltar para listagem*/       listagem = "none"
 
   //variavel excluir
-  exclui="none"
+  exclui = "none"
   //variavel alterar
-  altera="none"
+  altera = "none"
   //variavel para mostrar sucesso
-  sucesso="none"
-  
+  sucesso = "none"
+
   //inicializa o modal fechado
   display = "none"
-  volta=""
-  
-  
-  
+  volta = ""
 
   title = "ATENÇÃO"
   body = ""
-  
+
   componentes: Array<any> = new Array();
   componente: ListarModel = new ListarModel();
 
@@ -39,10 +36,10 @@ export class FichaUnicaComponent implements OnInit {
   imagePathExcluir = '/assets/excluir.png'
 
   //Variaveis para o input mask
-  cep=[/\d/,/\d/,'.',/\d/,/\d/,/\d/,'-',/\d/,/\d/,/\d/]
-  phone= ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
-  celPhone= ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
-  
+  cep = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]
+  phone = ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+  celPhone = ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+
   constructor(private listarCadastros: CadastrarService) { }
 
   ngOnInit() {
@@ -50,7 +47,6 @@ export class FichaUnicaComponent implements OnInit {
     var url = window.location.href;
     this.id = url.split(':')
     this.id = this.id[this.id.length - 1].split('=')
-    console.log(Number(this.id[0]) - 1)
     this.id[0] = Number(this.id[0]);
     this.listarComponentes()
   }
@@ -58,31 +54,29 @@ export class FichaUnicaComponent implements OnInit {
 
   //Preenche os campos com os dados do componente
   listarComponentes() {
-      this.listarCadastros.listarComponentes().subscribe(componentes => {
+    this.listarCadastros.listarComponentes().subscribe(componentes => {
       this.componentes = componentes
 
-      for(var i = 0; i<componentes.length; i++){
-        if(componentes[i].id==this.id[0]){
-          console.log(componentes[i].id+"  "+ this.id[0])
+      for (var i = 0; i < componentes.length; i++) {
+        if (componentes[i].id == this.id[0]) {
           this.componente = componentes[i];
           break
         }
       }
-      console.log(this.componente)
     }, err => {
-      console.log('Erro ao listar alunos ', err)
+      alert('Erro ao listar alunos ' + err)
     })
   }
 
   //Modal para verificação se deseja prosseguir com a exclusao dos dados do componente
   verificaDelete() {
-    this.opcoes=""  
-    this.listagem="none"
-    this.exclui=""
-    this.altera="none"
-    this.sucesso="none"
-    this.volta="none"
-  
+    this.opcoes = ""
+    this.listagem = "none"
+    this.exclui = ""
+    this.altera = "none"
+    this.sucesso = "none"
+    this.volta = "none"
+
     this.title = "ATENÇÃO"
     this.body = "Este cadastro está prestes a ser excluido. Continuar?"
     this.openModal()
@@ -91,19 +85,20 @@ export class FichaUnicaComponent implements OnInit {
   //Modal para verificação dos campos se estão de acordo com o exigido e Exibição 
   //do modal para confirmação de alteração
   verifica() {
-    this.opcoes=""
-    this.volta=""
+    this.opcoes = ""
+    this.volta = ""
     const name = this.componente.name
 
     const ano = String(this.componente.dataNasc).split('-');
 
+    //Expressões regulares para validação de dados
     const regexName = /[0-9]+/gmi;
     const regexDataNasc = /([0-9]{4})+[-]+([0-9]{2})+[-]+([0-9]{2})/gmi;
     const regexEmail = /[A-Za-z0-9._]+@[a-z]+\.[a-z]+/igm;
     const regexPhone = /\(+[0-9]{2}\)+\ +[0-9]{4}\-+[0-9]{4}/gmi
     const regexCelPhone = /\(+[0-9]{2}\)+\ +[0-9]{5}\-+[0-9]{4}/gmi
 
-    console.log(this.componente.celPhone)
+    
     if (this.componente.name == undefined || regexName.exec(this.componente.name) != null || this.componente.name == "") {
       this.body = "Nome inválido, tente novamente"
       this.openModal()
@@ -149,12 +144,12 @@ export class FichaUnicaComponent implements OnInit {
       this.openModal()
 
     } else {
-      this.opcoes=""
-      this.listagem="none"
-      this.exclui="none"
-      this.altera=""
-      this.sucesso="none"
-      this.volta="none"
+      this.opcoes = ""
+      this.listagem = "none"
+      this.exclui = "none"
+      this.altera = ""
+      this.sucesso = "none"
+      this.volta = "none"
 
       this.title = "ATENÇÃO"
       this.body = "Este cadastro está prestes a ser atualizado. Continuar?"
@@ -169,43 +164,41 @@ export class FichaUnicaComponent implements OnInit {
     this.listarCadastros.autualizarCadastro(Number(this.id[0]), this.componente).subscribe(componentes => {
       componentes = this.componentes
 
-      this.opcoes="none"
-      this.listagem=""
-      this.exclui="none"
-      this.altera="none"
-      this.sucesso=""
+      this.opcoes = "none"
+      this.listagem = ""
+      this.exclui = "none"
+      this.altera = "none"
+      this.sucesso = ""
 
       this.title = "SUCESSO"
       this.body = "Este cadastro foi ALTERADO com sucesso"
       this.openModal()
     }, err => {
-      console.log("Não foi possivel atualizar ", err)
+      alert("Não foi possivel atualizar " + err)
     })
   }
 
   //Deleta cadastro e imprime na tela que foi realizado com sucesso
   deleteCadastro() {
     this.listarCadastros.deleteCadastro(this.id[0]).subscribe(componentes => {
-      this.opcoes="none"
-      this.listagem=""
-      this.exclui="none"
-      this.altera="none"
-      this.sucesso=""
+      this.opcoes = "none"
+      this.listagem = ""
+      this.exclui = "none"
+      this.altera = "none"
+      this.sucesso = ""
 
       this.title = "SUCESSO"
       this.body = "Este cadastro foi EXCLUIDO com sucesso"
       this.openModal()
     }, err => {
-      console.log("Não foi possivel deletar o cadastro")
+      alert("Não foi possivel deletar o cadastro" + err)
     })
   }
-
 
   //Funcoes para abrir e fechar o modal
   openModal() {
     this.display = "block"
   }
-
   closeModal() {
     this.display = "none"
   }

@@ -141,8 +141,10 @@ alguma informação -->
     </div>
   </div>
 
-  <button style="margin-bottom: 4rem" class="btn btn-primary" (click)="verifica()"> <img [src]="imagePathEditar" alt=""> Editar cadastro</button>
-  <button style="margin-bottom: 4rem" class="btn btn-danger" (click)="verificaDelete()"> <img [src]="imagePathExcluir" alt=""> Exluir
+  <button style="margin-bottom: 4rem" class="btn btn-primary" (click)="verifica()"> <img [src]="imagePathEditar" alt="">
+    Editar cadastro</button>
+  <button style="margin-bottom: 4rem" class="btn btn-danger" (click)="verificaDelete()"> <img [src]="imagePathExcluir"
+      alt=""> Exluir
     cadastro</button>
 </form>
 
@@ -178,12 +180,11 @@ alguma informação -->
           <button type="button" class="btn btn-danger" (click)="closeModal()">Não</button>
         </div>
         <div [ngStyle]="{'display':volta}">
-            <button type="button" class="btn btn-danger" (click)="closeModal()">Fechar</button>
-          </div>
+          <button type="button" class="btn btn-danger" (click)="closeModal()">Fechar</button>
+        </div>
         <div [ngStyle]="{'display':sucesso}">
           <a routerLink="/listar" type="button" class="btn btn-success">Sair</a>
         </div>
-
       </div>
     </div>
   </div>

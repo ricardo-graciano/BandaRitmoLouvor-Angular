@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   
+  //Caminho da imagem na home
   image = '/assets/music_template.jpg'
 
   constructor() { }

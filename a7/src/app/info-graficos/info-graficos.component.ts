@@ -3,7 +3,6 @@ import { ChartType, ChartOptions, ChartDataSets } from 'chart.js';
 import { SingleDataSet, Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { CadastrarService } from '../cadastrar.service';
-import { fail } from 'assert';
 
 @Component({
   selector: 'app-info-graficos',
@@ -11,73 +10,64 @@ import { fail } from 'assert';
   styleUrls: ['./info-graficos.component.scss']
 })
 export class InfoGraficosComponent implements OnInit {
+  //Definição dos dados iniciais dos gráficos
   pieChartData: SingleDataSet = [0, 0];
-  
-  barChartData: ChartDataSets[] = []
-  getCadastros(){
-    this.listarCadastros.listarComponentes().subscribe(componentes=>{
+  barChartData: ChartDataSets[] = [{ data: [0], label: '' },]
+
+  //Função que captura os cadastros, assim gerando o quantitativo de cada quesito e armazenando 
+  //na várivel responsável por gravar os dados dos gráficos
+  getCadastros() {
+    this.listarCadastros.listarComponentes().subscribe(componentes => {
       var i = 0
-      var masc =0
-      var fem=0
+      var masc = 0
+      var fem = 0
       var vio = 0, fla = 0, cla = 0, alto = 0, tenor = 0;
-      var tromp = 0, tromb = 0, bomb =0
-      var tec =0, contb = 0, bat =0;
-      for(i = 0 ; i < componentes.length; i++ ){
-        if(componentes[i].sexo == "Masculino"){
+      var tromp = 0, tromb = 0, bomb = 0
+      var tec = 0, contb = 0, bat = 0;
+      for (i = 0; i < componentes.length; i++) {
+        if (componentes[i].sexo == "Masculino") {
           masc++
-        } else{
+        } else {
           fem++
         }
 
-        if(componentes[i].instrumento == "Violino"){
+        if (componentes[i].instrumento == "Violino") {
           vio++;
-          console.log('vio')
         }
-        else if (componentes[i].instrumento == "Flauta"){
+        else if (componentes[i].instrumento == "Flauta") {
           fla++
-          console.log('fla')
         }
-        else if (componentes[i].instrumento == "Clarinete"){
+        else if (componentes[i].instrumento == "Clarinete") {
           cla++
-          console.log('clar')
         }
-        else if (componentes[i].instrumento == "Sax Alto"){
+        else if (componentes[i].instrumento == "Sax Alto") {
           alto++
-          console.log('alto')
         }
-        else if (componentes[i].instrumento == "Sax Tenor"){
+        else if (componentes[i].instrumento == "Sax Tenor") {
           tenor++
-          console.log('ten')
         }
-        else if (componentes[i].instrumento == "Trompete"){
+        else if (componentes[i].instrumento == "Trompete") {
           tromp++
-          console.log('tromp')
         }
-        else if (componentes[i].instrumento == "Trombone"){
+        else if (componentes[i].instrumento == "Trombone") {
           tromb++
-          console.log('tromb')
         }
-        else if (componentes[i].instrumento == "Bombardino"){
+        else if (componentes[i].instrumento == "Bombardino") {
           bomb++
-          console.log('bomb')
         }
-        else if (componentes[i].instrumento == "Teclado"){
+        else if (componentes[i].instrumento == "Teclado") {
           tec++
-          console.log('tec')
         }
-        else if (componentes[i].instrumento == "Contra-baixo"){
+        else if (componentes[i].instrumento == "Contra-baixo") {
           contb++
-          console.log('tec')
         }
         else {
           bat++
-          console.log('bat')
         }
-          
+
       }
 
-      console.log(masc + " " + fem)
-      this.pieChartData = [ Number(fem), Number(masc)];
+      this.pieChartData = [Number(fem), Number(masc)];
 
       this.barChartData = [
         { data: [vio], label: 'Violino' },
@@ -92,15 +82,13 @@ export class InfoGraficosComponent implements OnInit {
         { data: [contb], label: 'Contra-baixo' },
         { data: [bat], label: 'Bateria' },
       ];
-      console.log(this.barChartData)
-      
-    }, err=>{
-      console.log("Erro ao capturar cadastros ", err)
+
+    }, err => {
+      alert("Erro ao capturar cadastros " + err)
     })
-    
-    
   }
 
+  //Definições das propriedades do gráfico tipo pie
   public pieChartOptions: ChartOptions = {
     responsive: true,
     plugins: {
@@ -113,22 +101,17 @@ export class InfoGraficosComponent implements OnInit {
     }
   };
 
-   pieChartLabels: Label[] = [['Feminino'], ['Masculino']];
-   
-   pieChartType: ChartType = 'pie';
-   pieChartLegend = true;
-   public pieChartPlugins = [pluginDataLabels];
+  pieChartLabels: Label[] = [['Feminino'], ['Masculino']];
+
+  pieChartType: ChartType = 'pie';
+  pieChartLegend = true;
+  public pieChartPlugins = [pluginDataLabels];
   constructor(private listarCadastros: CadastrarService) { }
 
   componentes: Array<any> = new Array()
-  
-  
-  
-  
 
   ngOnInit() {
     this.getCadastros()
-    
   }
 
   // events
@@ -140,17 +123,18 @@ export class InfoGraficosComponent implements OnInit {
     console.log(event, active);
   }
 
-  //Gráfico de barras
+  //Definições das propriedades do gráfico de barras
   public barChartOptions: ChartOptions = {
     responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
-    scales: { 
-      xAxes: [{}], 
-      yAxes: [{ticks: {
-                        min: 0,
-                        stepSize: 1,
-                        reverse: false,
-                        },}] 
+    scales: {
+      xAxes: [{}],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          stepSize: 1,
+          reverse: false,
+        },
+      }]
     },
     plugins: {
       datalabels: {
@@ -163,9 +147,6 @@ export class InfoGraficosComponent implements OnInit {
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
-
-  
-
 }
 
 
